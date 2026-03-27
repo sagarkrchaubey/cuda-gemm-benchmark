@@ -1,0 +1,31 @@
+{
+  "benchmarks": [
+    {
+      "name": "small",
+      "matrix_sizes": [
+        {"M": 256, "N": 256, "K": 256},
+        {"M": 512, "N": 512, "K": 512}
+      ],
+      "iterations": 100
+    },
+    {
+      "name": "medium",
+      "matrix_sizes": [
+        {"M": 1024, "N": 1024, "K": 1024},
+        {"M": 2048, "N": 2048, "K": 2048}
+      ],
+      "iterations": 50
+    },
+    {
+      "name": "large",
+      "matrix_sizes": [
+        {"M": 4096, "N": 4096, "K": 4096},
+        {"M": 8192, "N": 8192, "K": 8192}
+      ],
+      "iterations": 10
+    }
+  ],
+  "verify_correctness": true,
+  "generate_plots": true,
+  "output_directory": "results/"
+}
