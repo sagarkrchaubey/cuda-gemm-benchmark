@@ -1,0 +1,22 @@
+nvcc warning : The -std=c++17 flag is not supported with the configured host compiler. Flag will be ignored.
+src/main.cu(32): error: explicit type is missing ("int" assumed)
+
+src/main.cu(32): error: no suitable conversion function from "BenchmarkResult" to "int" exists
+
+src/main.cu(33): error: no suitable constructor exists to convert from "int" to "BenchmarkResult"
+
+src/main.cu(35): error: explicit type is missing ("int" assumed)
+
+src/main.cu(35): error: no suitable conversion function from "BenchmarkResult" to "int" exists
+
+src/main.cu(36): error: no suitable constructor exists to convert from "int" to "BenchmarkResult"
+
+src/main.cu(39): error: expression must have class type
+
+src/main.cu(39): error: expression must have class type
+
+src/main.cu(11): warning: variable "size" was declared but never referenced
+
+8 errors detected in the compilation of "src/main.cu".
+make: *** [build] Error 1
+/var/share/slurm/d/job28099/slurm_script: line 59: ./bin/benchmark: No such file or directory

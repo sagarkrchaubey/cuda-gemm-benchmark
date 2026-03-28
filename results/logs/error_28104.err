@@ -1,0 +1,8 @@
+src/main.cu(11): warning: variable "size" was declared but never referenced
+
+gcc: error: src/utils.cu: No such file or directory
+gcc: warning: ‘-x c++’ after last input file has no effect
+gcc: fatal error: no input files
+compilation terminated.
+make: *** [build] Error 4
+/var/share/slurm/d/job28104/slurm_script: line 59: ./bin/benchmark: No such file or directory

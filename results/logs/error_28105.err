@@ -1,0 +1,16 @@
+make: Warning: File `Makefile' has modification time 83 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+make: Warning: File `Makefile' has modification time 82 s in the future
+src/main.cu(11): warning: variable "size" was declared but never referenced
+
+/tmp/tmpxft_00002e80_00000000-26_benchmark.o: In function `main':
+benchmark.cpp:(.text.startup+0x0): multiple definition of `main'
+/tmp/tmpxft_00002e80_00000000-19_main.o:tmpxft_00002e80_00000000-6_main.cudafe1.cpp:(.text.startup+0x0): first defined here
+/tmp/tmpxft_00002e80_00000000-19_main.o: In function `main':
+tmpxft_00002e80_00000000-6_main.cudafe1.cpp:(.text.startup+0xd1): undefined reference to `run_benchmark(void (*)(float*, float*, float*, int), float*, float*, float*, int)'
+tmpxft_00002e80_00000000-6_main.cudafe1.cpp:(.text.startup+0xe4): undefined reference to `print_result(char const*, BenchmarkResult)'
+tmpxft_00002e80_00000000-6_main.cudafe1.cpp:(.text.startup+0xfd): undefined reference to `run_benchmark(void (*)(float*, float*, float*, int), float*, float*, float*, int)'
+tmpxft_00002e80_00000000-6_main.cudafe1.cpp:(.text.startup+0x115): undefined reference to `print_result(char const*, BenchmarkResult)'
+collect2: error: ld returned 1 exit status
+make: *** [build] Error 1
+/var/share/slurm/d/job28105/slurm_script: line 59: ./bin/benchmark: No such file or directory

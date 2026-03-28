@@ -2,18 +2,29 @@
 #define MATRIX_OPS_CUH
 
 #include <cuda_runtime.h>
+#include "utils.cuh"
 
-// Matrix allocation and deallocation
-float* allocate_matrix_device(int rows, int cols);
-float* allocate_matrix_host(int rows, int cols);
-void deallocate_matrix_device(float* matrix);
-void deallocate_matrix_host(float* matrix);
+inline float* allocate_matrix_host(int rows, int cols) {
+    return (float*)malloc(rows * cols * sizeof(float));
+}
 
-// Data transfer
-void copy_host_to_device(const float* h_matrix, float* d_matrix, int rows, int cols);
-void copy_device_to_host(const float* d_matrix, float* h_matrix, int rows, int cols);
+inline float* allocate_matrix_device(int rows, int cols) {
+    float* d_ptr;
+    CUDA_CHECK(cudaMalloc(&d_ptr, rows * cols * sizeof(float)));
+    return d_ptr;
+}
 
-// Matrix operations
-void matrix_multiply_cpu(int M, int N, int K, float alpha, const float* A, const float* B, float beta, float* C);
+inline void deallocate_matrix_host(float* matrix) {
+    free(matrix);
+}
 
-#endif // MATRIX_OPS_CUH
+inline void deallocate_matrix_device(float* matrix) {
+    CUDA_CHECK(cudaFree(matrix));
+}
+
+inline void copy_host_to_device(const float* h, float* d, int rows, int cols) {
+    CUDA_CHECK(cudaMemcpy(d, h, rows * cols * sizeof(float),
+                          cudaMemcpyHostToDevice));
+}
+
+#endif

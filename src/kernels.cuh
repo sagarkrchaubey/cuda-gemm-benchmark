@@ -1,15 +1,14 @@
 #ifndef KERNELS_CUH
 #define KERNELS_CUH
 
-#include <cuda_runtime.h>
+// Naive kernel launcher
+void launch_naive(float* d_A, float* d_B, float* d_C, int N);
 
-// Naive GEMM kernel
-__global__ void naive_gemm(int M, int N, int K, float alpha, const float* A, const float* B, float beta, float* C);
+// Tiled
+void launch_tiled(float* d_A, float* d_B, float* d_C, int N);
 
-// Tiled GEMM kernel with shared memory
-__global__ void tiled_gemm(int M, int N, int K, float alpha, const float* A, const float* B, float beta, float* C);
 
-// Optimized GEMM kernel with loop unrolling and coalescing
-__global__ void optimized_gemm(int M, int N, int K, float alpha, const float* A, const float* B, float beta, float* C);
+// cuBLAS wrapper
+void launch_cublas(float* d_A, float* d_B, float* d_C, int N);
 
-#endif // KERNELS_CUH
+#endif

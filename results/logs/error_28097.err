@@ -1,0 +1,25 @@
+
+For better command line support, copy and paste the folowing,
+ which will source the spack setup script:
+
+. /home/apps/spack/share/spack/setup-env.sh 
+
+
+If using spack to install to system area, make sure to set umask 0002 
+so that group write access is available to the software Linux group. 
+
+Spack requires Python 3.6 or higher You are running spack with Python 2.7.5.
+Spack requires Python 3.6 or higher You are running spack with Python 2.7.5.
+
+For better command line support, copy and paste the folowing,
+ which will source the spack setup script:
+
+. /home/apps/spack/share/spack/setup-env.sh 
+
+
+If using spack to install to system area, make sure to set umask 0002 
+so that group write access is available to the software Linux group. 
+
+/bin/sh: line 84: spack: command not found
+make: *** [build] Error 127
+/var/share/slurm/d/job28097/slurm_script: line 65: ./bin/benchmark: No such file or directory

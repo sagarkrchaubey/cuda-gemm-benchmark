@@ -1,0 +1,6 @@
+make: Warning: File `Makefile' has modification time 174 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+make: Warning: File `Makefile' has modification time 174 s in the future
+src/main.cu(11): warning: variable "size" was declared but never referenced
+
+make: warning:  Clock skew detected.  Your build may be incomplete.

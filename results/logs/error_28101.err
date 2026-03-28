@@ -1,0 +1,26 @@
+make: Warning: File `Makefile' has modification time 108 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+make: Warning: File `Makefile' has modification time 108 s in the future
+src/main.cu(11): warning: variable "size" was declared but never referenced
+
+src/cublas_impl.cu(1): error: "#" not expected here
+
+src/cublas_impl.cu(1): error: this declaration has no storage class or type specifier
+
+src/cublas_impl.cu(1): error: expected a ";"
+
+src/../include/utils.cuh(20): warning: parsing restarts here after previous syntax error
+
+src/cublas_impl.cu(7): error: identifier "cublasHandle_t" is undefined
+
+src/cublas_impl.cu(8): error: identifier "cublasCreate" is undefined
+
+src/cublas_impl.cu(16): error: identifier "CUBLAS_OP_N" is undefined
+
+src/cublas_impl.cu(14): error: identifier "cublasSgemm" is undefined
+
+src/cublas_impl.cu(25): error: identifier "cublasDestroy" is undefined
+
+8 errors detected in the compilation of "src/cublas_impl.cu".
+make: *** [build] Error 1
+/var/share/slurm/d/job28101/slurm_script: line 59: ./bin/benchmark: No such file or directory

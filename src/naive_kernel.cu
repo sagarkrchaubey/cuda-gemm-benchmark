@@ -1,16 +1,31 @@
+#include "../include/utils.cuh"
 #include "kernels.cuh"
 
-// Naive GEMM kernel: C = alpha * A * B + beta * C
-// Each thread computes one element of the result matrix
-__global__ void naive_gemm(int M, int N, int K, float alpha, const float* A, const float* B, float beta, float* C) {
+// CUDA kernel
+__global__ void naive_gemm_kernel(float* A, float* B, float* C, int N) {
+
     int row = blockIdx.y * blockDim.y + threadIdx.y;
     int col = blockIdx.x * blockDim.x + threadIdx.x;
 
-    if (row < M && col < N) {
+    if (row < N && col < N) {
+
         float sum = 0.0f;
-        for (int k = 0; k < K; ++k) {
-            sum += A[row * K + k] * B[k * N + col];
+
+        for (int k = 0; k < N; k++) {
+            sum += A[row * N + k] * B[k * N + col];
         }
-        C[row * N + col] = alpha * sum + beta * C[row * N + col];
+
+        C[row * N + col] = sum;
     }
+}
+
+// Launcher (important abstraction)
+void launch_naive(float* d_A, float* d_B, float* d_C, int N) {
+
+    dim3 threads(16, 16);
+    dim3 blocks((N + 15) / 16, (N + 15) / 16);
+
+    naive_gemm_kernel<<<blocks, threads>>>(d_A, d_B, d_C, N);
+
+    CUDA_CHECK(cudaDeviceSynchronize());
 }

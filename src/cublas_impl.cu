@@ -1,20 +1,28 @@
 #include <cublas_v2.h>
-#include <stdio.h>
+#include "../include/utils.cuh"
+#include "kernels.cuh"
 
-// Wrapper for cuBLAS GEMM for benchmarking comparison
-void cublas_gemm(int M, int N, int K, float alpha, const float* d_A, const float* d_B, float beta, float* d_C) {
+void launch_cublas(float* d_A, float* d_B, float* d_C, int N) {
+
     cublasHandle_t handle;
     cublasCreate(&handle);
 
-    // cuBLAS uses column-major ordering
-    // For row-major matrices, we need to adjust parameters
-    cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N,
-                N, M, K,
-                &alpha,
-                d_B, N,
-                d_A, K,
-                &beta,
-                d_C, N);
+    float alpha = 1.0f;
+    float beta = 0.0f;
+
+    // Note: column-major internally
+    cublasSgemm(
+        handle,
+        CUBLAS_OP_N, CUBLAS_OP_N,
+        N, N, N,
+        &alpha,
+        d_B, N,
+        d_A, N,
+        &beta,
+        d_C, N
+    );
 
     cublasDestroy(handle);
+
+    CUDA_CHECK(cudaDeviceSynchronize());
 }
